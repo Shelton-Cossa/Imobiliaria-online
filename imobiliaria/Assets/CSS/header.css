@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+
+header {
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(47, 113, 221);
+    border-radius: 5px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+}
+
+a:hover {
+    color: black;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    list-style: none;
+}
+
+#entrar {
+    width: 12vw;
+    height: 5vh;
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+}
+
+#entrar a {
+    color: rgb(47, 113, 221);
+    font-weight: bold;
+}
+
+span a {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        padding: 0;
+    }
+
+    #entrar {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    span a {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    a {
+        font-size: 1rem;
+    }
+
+    #entrar {
+        width: 100%;
+    }
+}
+
+/* Indicação da página ativa */
+nav ul li a.active {
+    color: yellow;
+    font-weight: bold;
+    border-bottom: 3px solid yellow;
+}
+
+/* Efeito ao passar o mouse */
+nav ul li a:hover {
+    color: #222;
+    transition: 0.3s;
+}
+
+/* Avatar do usuário */
+.user-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: white;
+    color: black;
+    list-style: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.dropdown li {
+    padding: 10px 15px;
+}
+
+.dropdown li a {
+    color: black;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.dropdown li:hover {
+    background-color: #f2f2f2;
+}
+
+/* Mostrar dropdown quando ativo */
+.user-menu.active .dropdown {
+    display: block;
+}

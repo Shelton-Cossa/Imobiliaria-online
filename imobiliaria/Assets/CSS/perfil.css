@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, sans-serif;
+}
+
+.perfil-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #2c3e50;
+}
+
+/* Cabeçalho */
+.perfil-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.perfil-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1a73e8;
+}
+
+.dados-usuario h2 {
+    color: #1a73e8;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.dados-usuario p {
+    margin: 3px 0;
+    color: #555;
+}
+
+.acoes-perfil {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-acao {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-acao:hover {
+    opacity: 0.85;
+}
+
+.linha-divisoria {
+    border: 1px solid #ddd;
+    margin: 25px 0;
+}
+
+/* Publicações */
+.publicacoes-container {
+    margin-top: 20px;
+}
+
+.publicacoes-container h3 {
+    font-size: 1.5rem;
+    color: #1a73e8;
+    margin-bottom: 20px;
+}
+
+.publicacao {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.imagem-imovel {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.dados-imovel h4 {
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.dados-imovel p {
+    margin: 4px 0;
+}
+
+.acoes-imovel {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-editar,
+.btn-remover {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-editar {
+    background-color: #1a73e8;
+}
+
+.btn-remover, .excluir {
+    background-color: #d9534f;
+}
+
+.btn-editar:hover,
+.btn-remover:hover,
+.excluir:hover {
+    opacity: 0.85;
+}
+
+/* ===== MODAL DE CONFIRMAÇÃO ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    margin-bottom: 0.8rem;
+    color: #d11a2a;
+}
+
+.modal-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.modal-acoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn-cancelar,
+.btn-confirmar {
+    flex: 1;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-cancelar {
+    background: #ccc;
+    color: #333;
+}
+
+.btn-cancelar:hover {
+    background: #bbb;
+}
+
+.btn-confirmar {
+    background: #d11a2a;
+    color: #fff;
+}
+
+.btn-confirmar:hover {
+    background: #a30f1d;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .perfil-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .publicacao {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imagem-imovel {
+        width: 100%;
+        height: auto;
+    }
+
+    .dados-imovel {
+        text-align: center;
+    }
+}

@@ -1,0 +1,152 @@
+/* Reset e estilo base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+/* Corpo com fundo suave */
+body {
+    background: linear-gradient(to bottom right, #2f71dd, #4da8ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container do formulário */
+form {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Título */
+#login {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2f71dd;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Rótulos e campos */
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+input,
+select {
+    width: 100%;
+    height: 42px;
+    margin-top: 5px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    font-size: 1rem;
+}
+
+/* Foco nos inputs */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2f71dd;
+    box-shadow: 0 0 5px rgba(47, 113, 221, 0.3);
+}
+
+/* Botão principal */
+input[type="submit"] {
+    background-color: #2f71dd;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    height: 45px;
+    border-radius: 8px;
+}
+
+input[type="submit"]:hover {
+    background-color: #1f56b8;
+}
+
+/* Texto de link */
+p {
+    text-align: center;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+p a {
+    color: #2f71dd;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    #login {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background: #2f71dd;
+    }
+
+    form {
+        width: 95%;
+        padding: 15px;
+        box-shadow: none;
+        border-radius: 0;
+        min-height: 100vh;
+        justify-content: center;
+    }
+
+    #login {
+        color: white;
+    }
+
+    label {
+        color: #f8f8f8;
+    }
+
+    input,
+    select {
+        border: none;
+    }
+
+    input[type="submit"] {
+        background-color: white;
+        color: #2f71dd;
+        font-weight: bold;
+    }
+
+    p,
+    p a {
+        color: #f8f8f8;
+    }
+}

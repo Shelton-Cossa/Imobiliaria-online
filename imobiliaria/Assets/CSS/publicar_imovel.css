@@ -1,0 +1,136 @@
+/* -------------------------
+   VARIÁVEIS DE ESTILO
+-------------------------- */
+:root {
+    --cor-primaria: #007bff;
+    --cor-secundaria: #0056b3;
+    --cor-fundo: #f5f7fa;
+    --cor-texto: #333;
+    --cor-branco: #ffffff;
+    --cor-borda: #dce3ec;
+    --sombra-suave: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------------
+   ESTILOS GERAIS
+-------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* -------------------------
+   CONTEÚDO PRINCIPAL
+-------------------------- */
+main.publicar {
+    flex: 1;
+    max-width: 800px;
+    margin: 3rem auto;
+    background: var(--cor-branco);
+    box-shadow: var(--sombra-suave);
+    border-radius: 15px;
+    padding: 2.5rem;
+}
+
+main.publicar h1 {
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* -------------------------
+   FORMULÁRIO DE PUBLICAÇÃO
+-------------------------- */
+.form-publicar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-publicar label {
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.form-publicar input,
+.form-publicar select,
+.form-publicar textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-publicar input:focus,
+.form-publicar select:focus,
+.form-publicar textarea:focus {
+    border-color: var(--cor-primaria);
+}
+
+.form-publicar button {
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    font-weight: bold;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.form-publicar button:hover {
+    background: var(--cor-secundaria);
+}
+
+/* -------------------------
+   PRÉ-VISUALIZAÇÃO DE IMAGENS
+-------------------------- */
+.preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.preview-container img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--sombra-suave);
+    border: 1px solid var(--cor-borda);
+    transition: transform 0.2s;
+}
+
+.preview-container img:hover {
+    transform: scale(1.05);
+}
+
+/* -------------------------
+   RESPONSIVIDADE
+-------------------------- */
+@media (max-width: 768px) {
+    header nav ul {
+        display: none;
+    }
+
+    main.publicar {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
