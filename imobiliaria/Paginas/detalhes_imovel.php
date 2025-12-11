@@ -1,20 +1,22 @@
 <?php
 session_start();
 require_once "../Includes/conexao.php";
+require_once "../Includes/auth.php";
+protegerPagina();
 
-// 🔒 Verifica se o usuário está logado
-if (!isset($_SESSION['usuario_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// ✅ Verifica se o ID foi passado
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+// ✅ Valida token seguro
+if (!isset($_GET['token']) || empty($_GET['token'])) {
     header("Location: inicio.php");
     exit();
 }
 
-$id_imovel = (int) $_GET['id'];
+$token = $_GET['token'];
+if (!isset($_SESSION['imovel_tokens'][$token])) {
+    header("Location: inicio.php");
+    exit();
+}
+
+$id_imovel = (int) $_SESSION['imovel_tokens'][$token];
 
 try {
     // 🏠 Busca dados do imóvel
@@ -28,14 +30,15 @@ try {
         exit();
     }
 
+    $usuario_id = $_SESSION['usuario_id'];
+    $proprietario = ($imovel['usuario_id'] == $usuario_id);
+
     // Diretórios base
-    $usuario_id = $imovel['usuario_id'];
-    $base_path = "../Uploads/imoveis/{$usuario_id}/{$id_imovel}/";
+    $base_path = "../Uploads/imoveis/{$imovel['usuario_id']}/{$id_imovel}/";
 
     // 📸 Imagem principal
     $principal_dir = $base_path . "principal/";
     $imagem_principal = null;
-
     if (is_dir($principal_dir)) {
         $arquivos = glob($principal_dir . "*.{jpg,jpeg,png,webp,gif}", GLOB_BRACE);
         if (!empty($arquivos)) {
@@ -46,7 +49,6 @@ try {
     // 🖼️ Galeria
     $galeria = [];
     $galeria_dir = $base_path . "galeria/";
-
     if (is_dir($galeria_dir)) {
         $galeria = glob($galeria_dir . "*.{jpg,jpeg,png,webp,gif}", GLOB_BRACE);
     }
@@ -62,12 +64,11 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($imovel['titulo']) ?> - Detalhes do Imóvel</title>
+    <title>Detalhes do Imóvel</title>
     <link rel="stylesheet" href="../Assets/CSS/detalhes_imovel.css">
 </head>
 
 <body>
-
     <?php include "../Includes/header.php"; ?>
 
     <main class="container">
@@ -104,15 +105,18 @@ try {
             </div>
 
             <div class="acoes">
-                <a href="../Back-end/iniciar_conversa.php?destinatario=<?= urlencode($imovel['usuario_id']) ?>"
-                    class="btn">Contactar Anunciante</a>
+                <?php if ($proprietario): ?>
+                    <a href="editar_imovel.php?token=<?= urlencode($token) ?>" class="btn editar">Editar</a>
+                <?php else: ?>
+                    <a href="../Back-end/iniciar_conversa.php?destinatario=<?= urlencode($imovel['usuario_id']) ?>"
+                        class="btn">Contactar Anunciante</a>
+                <?php endif; ?>
                 <a href="inicio.php" class="btn voltar">Voltar</a>
             </div>
         </section>
     </main>
 
     <?php include "../Includes/footer.php"; ?>
-
 </body>
 
 </html>

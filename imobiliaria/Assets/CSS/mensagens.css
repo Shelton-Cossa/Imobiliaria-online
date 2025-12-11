@@ -1,219 +1,200 @@
-/* ================================
-   ESTILO GERAL
-=================================== */
-body {
-    font-family: "Poppins", sans-serif;
+/* ===== Reset e base ===== */
+body, html {
     margin: 0;
-    background-color: #f5f6fa;
-    color: #333;
+    padding: 0;
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+    background-color: #f7f9fc;
 }
 
+/* ===== Container principal ===== */
 .mensagens-container {
     display: flex;
     height: 90vh;
-    max-width: 1200px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* ================================
-   LISTA DE CONVERSAS
-=================================== */
+/* ===== Sidebar de conversas ===== */
 .lista-conversas {
     width: 30%;
-    background-color: #f9fafb;
-    border-right: 1px solid #e5e7eb;
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    transition: all 0.3s ease;
 }
 
 .lista-conversas h3 {
-    text-align: center;
     padding: 20px;
-    font-size: 1.2rem;
-    border-bottom: 1px solid #e5e7eb;
-    color: #1f2937;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: clamp(16px, 2vw, 18px);
 }
 
 .conversa {
     display: flex;
     align-items: center;
-    gap: 12px;
     padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
-    transition: background 0.2s ease;
-    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.2s;
 }
 
-.conversa:hover {
-    background-color: #eef2ff;
-}
-
+.conversa:hover,
 .conversa.ativa {
-    background-color: #e0e7ff;
-    border-left: 4px solid #4f46e5;
+    background: #eef3ff;
 }
 
 .conversa img.avatar {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    object-fit: cover;
+    margin-right: 12px;
 }
 
 .info-conversa h4 {
-    font-size: 0.95rem;
     margin: 0;
-    font-weight: 600;
-    color: #111827;
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: #333;
 }
 
 .info-conversa p {
-    font-size: 0.85rem;
-    color: #6b7280;
-    margin: 2px 0 0 0;
+    margin: 3px 0 0;
+    color: #666;
+    font-size: clamp(12px, 1.5vw, 14px);
 }
 
-/* ================================
-   ÁREA DO CHAT
-=================================== */
+/* ===== Área do chat ===== */
 .chat-area {
-    width: 70%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background: #f2f5fa;
+    transition: all 0.3s ease;
 }
 
-/* Cabeçalho do chat */
 .chat-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    background: #fff;
     padding: 15px 20px;
-    border-bottom: 1px solid #e5e7eb;
-    background-color: #f9fafb;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0;
+    gap: 10px;
 }
 
 .chat-header img.avatar-header {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    object-fit: cover;
 }
 
 .chat-header h4 {
-    font-weight: 600;
-    color: #1f2937;
+    margin: 0;
+    color: #333;
+    font-size: clamp(15px, 2vw, 18px);
 }
 
-/* ================================
-   MENSAGENS
-=================================== */
+/* Botão voltar (visível só em mobile) */
+.chat-header .btn-voltar {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #4e73df;
+}
+
+/* ===== Mensagens ===== */
 .chat-mensagens {
-    flex-grow: 1;
+    flex: 1;
     padding: 20px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    overflow-y: auto;
-    background-color: #f3f4f6;
+    scroll-behavior: smooth;
 }
 
 .mensagem {
-    max-width: 70%;
+    max-width: 75%;
     padding: 10px 14px;
-    border-radius: 15px;
-    line-height: 1.4;
+    border-radius: 12px;
+    line-height: 1.5;
+    font-size: clamp(13px, 1.8vw, 15px);
     position: relative;
+    word-wrap: break-word;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .mensagem.recebida {
     align-self: flex-start;
-    background-color: #fff;
-    border: 1px solid #e5e7eb;
+    background: #fff;
+    border: 1px solid #e2e2e2;
 }
 
 .mensagem.enviada {
     align-self: flex-end;
-    background-color: #4f46e5;
+    background: #4e73df;
     color: white;
 }
 
 .mensagem .hora {
-    font-size: 0.7rem;
-    color: #9ca3af;
+    font-size: 11px;
+    opacity: 0.7;
     position: absolute;
     bottom: -16px;
     right: 10px;
 }
 
-/* ================================
-   INPUT DE MENSAGEM
-=================================== */
+/* ===== Input ===== */
 .chat-input {
     display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    border-top: 1px solid #e5e7eb;
-    background-color: #fff;
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0;
 }
 
 .chat-input input {
-    flex-grow: 1;
-    padding: 12px;
-    border: 1px solid #d1d5db;
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
     border-radius: 25px;
-    font-size: 0.95rem;
     outline: none;
-    transition: all 0.2s ease;
+    font-size: clamp(13px, 1.8vw, 15px);
+    transition: border-color 0.2s;
 }
 
 .chat-input input:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    border-color: #4e73df;
 }
 
 .chat-input button {
-    margin-left: 10px;
-    padding: 10px 20px;
-    background-color: #4f46e5;
+    background: #4e73df;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    margin-left: 10px;
     cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
+    transition: background 0.3s;
 }
 
 .chat-input button:hover {
-    background-color: #4338ca;
+    background: #3b5ccc;
 }
 
-/* ================================
-   RESPONSIVIDADE
-=================================== */
-@media (max-width: 850px) {
-    .mensagens-container {
-        flex-direction: column;
-        height: 100vh;
-        border-radius: 0;
-    }
-
-    .lista-conversas {
-        width: 100%;
-        height: 35%;
-    }
-
-    .chat-area {
-        width: 100%;
-        height: 65%;
-    }
-
-    .mensagem {
-        max-width: 85%;
-    }
+/* ===== Scrollbar discreta ===== */
+.chat-mensagens::-webkit-scrollbar,
+.lista-conversas::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-mensagens::-webkit-scrollbar-thumb,
+.lista-conversas::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
 }

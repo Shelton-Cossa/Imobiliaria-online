@@ -5,7 +5,7 @@ require_once "../Includes/auth.php";
 protegerPagina();
 
 $usuario_id = $_SESSION['usuario_id'];
-$conversa_id = (int) ($_GET['conversa_id'] ?? 0);
+$conversa_id = (int)($_GET['conversa_id'] ?? 0);
 
 $stmt = $conn->prepare("
     SELECT m.*, u.nome, u.foto_perfil 

@@ -5,7 +5,7 @@ require_once "../Includes/auth.php";
 protegerPagina();
 
 $usuario_id = $_SESSION['usuario_id'];
-$destinatario_id = isset($_GET['destinatario']) ? (int) $_GET['destinatario'] : 0;
+$destinatario_id = isset($_GET['destinatario']) ? (int)$_GET['destinatario'] : 0;
 
 // ⚠️ Impedir conversa consigo mesmo
 if ($destinatario_id === $usuario_id || $destinatario_id <= 0) {
